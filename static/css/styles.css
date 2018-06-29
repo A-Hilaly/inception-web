@@ -166,3 +166,55 @@ img.article-image {
 .pred-class {
     max-width: 350px;
 }
+
+.button__run:hover {
+    color: rgb(239, 239, 239);
+    background-color: rgb(38, 212, 107);
+}
+
+.button__run{
+    color: rgb(38, 212, 107);
+    background-color: rgb(239, 239, 239);
+}
+
+.button__refresh {
+    background-color: rgb(239, 239, 239);
+    color: rgb(41, 111, 232);
+}
+
+.button__refresh:hover {
+    background-color: rgb(41, 111, 232);
+    color: rgb(239, 239, 239);
+}
+
+.button__http{
+    background-color: rgb(239, 239, 239);
+    color: rgb(0, 0, 0);
+}
+
+.button__http:hover {
+    background-color: rgb(0, 0, 0);
+    color: rgb(239, 239, 239);
+}
+
+.button__delete {
+    background-color: rgb(239, 239, 239);
+    color: rgb(208, 27, 27);
+}
+
+.button__delete:hover {
+    background-color: rgb(211, 22, 22);
+    color: rgb(239, 239, 239);
+}
+
+.prog-bar > .progressbar {
+    background-color: rgb(38, 212, 107);
+}
+
+.prog-bar > .bufferbar {
+    background-image: linear-gradient(to right, rgba(255,255,255, 0.7), rgba(255,255,255, 0.7)), linear-gradient(to right, rgb(38, 212, 107), rgb(38, 212, 107));
+}
+
+.prog-bar > .auxbar {
+    background-image: linear-gradient(to right, rgba(255,255,255, 0.9), rgba(255,255,255, 0.9)), linear-gradient(to right, rgb(38, 212, 107), rgb(38, 212, 107));
+}
