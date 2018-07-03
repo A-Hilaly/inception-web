@@ -27,6 +27,14 @@ ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 app = Flask(__name__, static_url_path='/static')
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+progInterface = [
+    {"ID": 1, "Str": "one"},
+    {"ID": 2, "Str": "two"},
+    {"ID": 3, "Str": "3"},
+    {"ID": 4, "Str": "4"},
+    {"ID": 5, "Str": "5"},
+]
+
 def uploadedImage(image):
     return os.path.join(UPLOAD_FOLDER, image)
 
@@ -96,7 +104,8 @@ def demo():
             "Namebase" : file.split('.')[0],
         }
         ls.append(r)
-    return render_template("demo.html", uploads=ls)
+    
+    return render_template("demo.html", uploads=ls, proginterface=progInterface)
 
 if __name__ == "__main__":
     # Download inception model

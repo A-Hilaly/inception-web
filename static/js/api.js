@@ -9,7 +9,6 @@ var runDemo = function(image) {
     var url = 'run_inference/' + image;
     http.open('POST', url, true);
     http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-
     http.onreadystatechange = function() {
         if(http.readyState == 4 && http.status == 200) {
             var obj = JSON.parse(http.responseText);
@@ -40,7 +39,6 @@ var deleteImage = function(image) {
     var url = 'delete_image/' + image;
     http.open('POST', url, true);
     http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-
     http.onreadystatechange = function() {
         if(http.readyState == 4 && http.status == 200) {
             var obj = JSON.parse(http.responseText);
