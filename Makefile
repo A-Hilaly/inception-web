@@ -58,5 +58,3 @@ demo:
 	python3 $(DEMO_ENTRY_POINT); \
 	)
 	@echo Done.
-
-.PHONY: clean

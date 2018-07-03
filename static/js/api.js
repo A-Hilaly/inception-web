@@ -4,6 +4,14 @@ var SetStats = function(id, classes, value) {
     document.getElementById('n' + id).innerHTML = classes;
 };
 
+var LoadingStatus = function(status, id) {
+    if (status == true) {
+        document.getElementById(id).style.display = "block";
+    } else {
+        document.getElementById(id).style.display = "none";
+    }
+}
+
 var runDemo = function(image) {
     var http = new XMLHttpRequest();
     var url = 'run_inference/' + image;
@@ -16,13 +24,15 @@ var runDemo = function(image) {
                 console.log("success", obj.response[1])
                 var i;
                 for (i = 1; i < 6; i++) { 
-                    SetStats(i, obj.response[i][0], Number((obj.response[i][1] * 100).toFixed(2)))
-                }
+                    SetStats(i, obj.response[i][0], Number((obj.response[i][1] * 100).toFixed(2)));
+                };
             } else {
-                console.log("no success")
-            }
-        }
-    }
+                console.log("no success");
+            };
+            LoadingStatus(false, "load_" + image);
+        };
+    };
+    LoadingStatus(true, "load_" + image);
     http.send();
 };
 
@@ -43,13 +53,10 @@ var deleteImage = function(image) {
         if(http.readyState == 4 && http.status == 200) {
             var obj = JSON.parse(http.responseText);
             if (obj.success == true) {
-                console.log("success");
                 window.location.href = '/demo';
-            } else {
-                console.log("no success");
-            }
-        }
-    }
+            };
+        };
+    };
     http.send();
 };
 

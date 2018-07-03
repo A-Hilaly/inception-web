@@ -13,9 +13,9 @@
 {% block content %}
 <div class="mdl-grid portfolio-max-width">
     <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp">
-        <div class="mdl-spinner mdl-js-spinner is-active"></div>
-
-        <span class="mdl-layout__title"> Top predictions </span>
+        <div id="">
+            <span class="mdl-layout__title"> Top predictions </span>
+        </div>
         <div class="demo-list-action mdl-list">
             {% for item in proginterface %}
                 <div class="mdl-list__item">
@@ -24,19 +24,21 @@
                         <span id="n{{ item.ID }}" class="pred-class"> Undefined </span>
                     </span>
                     <span id="s{{ item.ID }}">0%</span>
-                    <div id="p{{ item.ID }}" class="mdl-progress prog-bar mdl-js-progress" style="width: 700px; height: 20px"></div>
+                    <div id="p{{ item.ID }}" class="mdl-progress prog-bar mdl-js-progress" style="width: 400px; height: 20px"></div>
                 </div>
             {% endfor %}
         </div>
 
     </div>
     {% for item in uploads %}
-    <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-card  mdl-card mdl-shadow--4dp">
+    <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-card  mdl-card mdl-shadow--4dp" id="test--">
         <div class="mdl-card__media">
             <img class="article-image" src="/static/images/{{ item.Name }}" border="0" alt="">
         </div>
-        <div class="mdl-card__title ">
-            <h2 class="mdl-card__title-text"> {{ item.Namebase }} </h2>
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text" style="padding-right: 15px;"> {{ item.Namebase }} </h2>
+            <div class="mdl-progress mdl-js-progress mdl-progress__indeterminate" style="display:none;position: absolute; top: 309; left: 0;" id="load_{{ item.Name }}"></div>
+
         </div>
         <div class="mdl-card__actions mdl-card--border" style="text-align: center">
             <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect button__run" onclick="runDemo('{{item.Name}}');">
