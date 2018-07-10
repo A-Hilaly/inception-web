@@ -1,7 +1,8 @@
-var SetStats = function(id, classes, value) {
+var SetStats = function(id, classes, value, time) {
     document.querySelector('#p' + id).MaterialProgress.setProgress(value);
     document.getElementById('s' + id).innerHTML = value + '%';
     document.getElementById('n' + id).innerHTML = classes;
+    document.getElementById('tcalc').innerHTML = 'Estimated time  ' + time + '  s';
 };
 
 var LoadingStatus = function(status, id) {
@@ -12,7 +13,15 @@ var LoadingStatus = function(status, id) {
     }
 }
 
+var diff = function(t1, t2) {
+    var dif = t1.getTime() - t2.getTime();
+    var Seconds_from_T1_to_T2 = dif / 1000;
+    var Seconds_Between_Dates = Math.abs(Seconds_from_T1_to_T2);
+    return Seconds_Between_Dates;
+}
+
 var runDemo = function(image) {
+    var start = new Date();
     var http = new XMLHttpRequest();
     var url = 'run_inference/' + image;
     http.open('POST', url, true);
@@ -21,10 +30,11 @@ var runDemo = function(image) {
         if(http.readyState == 4 && http.status == 200) {
             var obj = JSON.parse(http.responseText);
             if (obj.success == true) {
+                var end = new Date();
                 console.log("success", obj.response[1])
                 var i;
                 for (i = 1; i < 6; i++) { 
-                    SetStats(i, obj.response[i][0], Number((obj.response[i][1] * 100).toFixed(2)));
+                    SetStats(i, obj.response[i][0], Number((obj.response[i][1] * 100).toFixed(2)), diff(start, end));
                 };
             } else {
                 console.log("no success");
